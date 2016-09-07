@@ -1,5 +1,6 @@
 package com.springinaction.springidol;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class PoeticJugglerTest {
 	  
 	@Test
 	public void test() {
-		Juggler juggler = context.getBean("juggler", Juggler.class);
+		/*Juggler juggler = context.getBean("juggler", Juggler.class);
 		try {
 			juggler.perform();
 		} catch (PerformanceException e) {
@@ -26,6 +27,11 @@ public class PoeticJugglerTest {
 		
 		Sonnet29 sonnet = context.getBean("sonnet", Sonnet29.class);
 		sonnet.recite();
+		Sonnet29 sonnet = context.getBean("sonnet", Sonnet29.class);
+		Sonnet29 sonnet1 = context.getBean("sonnet1", Sonnet29.class);
+		Auditorium s = context.getBean("auditorium", Auditorium.class);*/
+		Global s = context.getBean("global", Global.class);
+		s.print();
 	}
 
 }
