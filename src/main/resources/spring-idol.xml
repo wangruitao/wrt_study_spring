@@ -5,6 +5,7 @@
              xmlns:aop="http://www.springframework.org/schema/aop"
              xmlns:tx="http://www.springframework.org/schema/tx"
              xmlns:util="http://www.springframework.org/schema/util"
+             xmlns:p="http://www.springframework.org/schema/p"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
                      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                      http://www.springframework.org/schema/context
@@ -32,5 +33,39 @@
 			<constructor-arg name="poem" ref="sonnet" />
 		</bean>
 		
+		
+		<bean name="oneManBand" class="com.springinaction.springidol.OneManBand">
+			<property name="instruments">
+				<list>
+					<ref bean="saxop1" />
+					<ref bean="saxop2" />
+					<ref bean="saxop3" />
+					<ref bean="saxop4" />
+				</list>
+			</property>
+		</bean>
+		
+		<bean name="oneManBand2" class="com.springinaction.springidol.OneManBand2">
+			<property name="instruments">
+				<map>
+					<entry key="saxop1" value-ref="saxop1"></entry>
+					<entry key="saxop2" value-ref="saxop2"></entry>
+					<entry key="saxop3" value-ref="saxop3"></entry>
+					<entry key="saxop4" value-ref="saxop4"></entry>
+				</map>
+			</property>
+		</bean>
+		
 		<bean name="stage" class="com.springinaction.springidol.Stage" factory-method="getInstance" />
+		<bean name="saxop" class="com.springinaction.springidol.Saxophone"/>
+		<bean name="saxop1" class="com.springinaction.springidol.Saxophone"/>
+		<bean name="saxop2" class="com.springinaction.springidol.Saxophone"/>
+		<bean name="saxop3" class="com.springinaction.springidol.Saxophone"/>
+		<bean name="saxop4" class="com.springinaction.springidol.Saxophone"/>
+		<bean name="ins" class="com.springinaction.springidol.Instrumentalist" p:song="instest" p:instrument-ref="saxop" />
+		<bean name="piano" class="com.springinaction.springidol.Piano"/>
+		<bean name="carl" class="com.springinaction.springidol.Instrumentalist">
+			<property name="song" value="#{systemEnvironment['HOME']}"></property>
+			<property name="instrument" value="#{ins.selectSong()=='instest'?saxop:piano}"></property>
+		</bean>
 </beans>

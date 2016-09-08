@@ -29,9 +29,32 @@ public class PoeticJugglerTest {
 		sonnet.recite();
 		Sonnet29 sonnet = context.getBean("sonnet", Sonnet29.class);
 		Sonnet29 sonnet1 = context.getBean("sonnet1", Sonnet29.class);
-		Auditorium s = context.getBean("auditorium", Auditorium.class);*/
+		Auditorium s = context.getBean("auditorium", Auditorium.class);
 		Global s = context.getBean("global", Global.class);
-		s.print();
+		Instrumentalist s = context.getBean("ins", Instrumentalist.class);
+		OneManBand s = context.getBean("oneManBand", OneManBand.class);
+		try {
+			s.perform();
+		} catch (PerformanceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		OneManBand2 s = context.getBean("oneManBand2", OneManBand2.class);
+		try {
+			s.perform();
+		} catch (PerformanceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		*/
+		Instrumentalist s = context.getBean("carl", Instrumentalist.class);
+		try {
+			s.perform();
+		} catch (PerformanceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
